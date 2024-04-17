@@ -2,6 +2,11 @@ import React from 'react';
 import Image from 'next/image'
 import aboutPic from "../../../public/about.png";
 
+export const metadata = {
+  title: "About Page | Panda-Blog",
+  description: "My first Next JS project",
+}
+
 const AboutPage = () => {
     return (
         <main className='flex justify-center w-full'>
@@ -30,7 +35,7 @@ const AboutPage = () => {
         </div>
         <div className="w-[40%] pt-16 md:pt-0">
             <div className='w-[100%] h-[400px] relative flex justify-center'>
-              <Image src={aboutPic} alt=''/>
+              <Image src={aboutPic} alt='' fill placeholder='blur'/>
             </div>
         </div>
       </div>

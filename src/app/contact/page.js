@@ -2,13 +2,19 @@ import React from 'react';
 import Image from 'next/image'
 import contactPic from "../../../public/contact.png";
 
+export const metadata = {
+  title: "Contact Page | Panda-Blog",
+  description: "My first Next JS project",
+}
+
+
 const ContactPage = () => {
     return (
         <main className='flex justify-center w-full'>
       <div className="block md:flex w-[95%] md:w-[85%]">
         <div className="w-full md:w-[50%]">
             <div className='w-[90%] h-[400px] relative flex justify-center'>
-              <Image src={contactPic} alt=''/>
+              <Image src={contactPic} alt='' fill placeholder='blur'/>
             </div>
         </div>
         <div className="w-full md:w-[50%] flex justify-center mt-8 md:mt-0">
