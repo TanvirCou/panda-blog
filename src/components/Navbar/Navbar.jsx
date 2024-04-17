@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { usePathname } from "next/navigation";
 import { handleLogout } from "@/lib/action";
 
-
 const Navbar = ({session}) => {
     let Links =[
         {name:"Home",link:"/"},

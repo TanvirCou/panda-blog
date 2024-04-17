@@ -2,7 +2,8 @@ import React, { Suspense } from 'react';
 import Image from 'next/image'
 import blogPic from "../../../../public/blog.jpg";
 import dp from "../../../../public/noavatar.png";
-import { getSinglePost, getSingleUser } from '@/lib/data';
+import { getPosts, getSinglePost, getSingleUser } from '@/lib/data';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }) {
     const {slug} = params;
@@ -11,6 +12,14 @@ export async function generateMetadata({ params }) {
       title: `${slug} | Panda-Blog`,
       description: "My first Next JS project",
     }
+  };
+
+  export async function generateStaticParams() {
+    const posts = await getPosts();
+
+    return posts.map(post => ({
+        slug: post.slug,
+    }))
   }
 
 
@@ -19,6 +28,10 @@ const blogPage = async({params}) => {
 
     const post = await getSinglePost(slug);
     const user = await getSingleUser(post?.userId);
+
+    if(slug !== post?.slug) {
+        notFound();
+    }
 
     return (
         <div className='flex justify-center'>
